@@ -1,4 +1,4 @@
-# MBTI_Simulation
+# MBTI_Test
 
 웹서비스설계및구현 - hw1
 
