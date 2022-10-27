@@ -1,4 +1,6 @@
 var next_btn= document.getElementById('next_btn');
+var lst3
+
 next_btn.addEventListener('click', function(){
     if ((document.querySelector('input[id="inlineRadio11"]').checked ||
     document.querySelector('input[id="inlineRadio12"]').checked) && 
@@ -8,13 +10,27 @@ next_btn.addEventListener('click', function(){
     document.querySelector('input[id="inlineRadio32"]').checked) && 
     (document.querySelector('input[id="inlineRadio41"]').checked || 
     document.querySelector('input[id="inlineRadio42"]').checked)){
-        window.location = "http://localhost:5000/result"
+
+        lst3=[$("input[name='inlineRadioOptions1']:checked").val(),
+        $("input[name='inlineRadioOptions2']:checked").val(),
+        $("input[name='inlineRadioOptions3']:checked").val(),
+        $("input[name='inlineRadioOptions4']:checked").val()]
+
+        fetch("http://localhost:5000/result/3", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                lst: lst3
+            }),
+        }).then((response) => console.log(response));
+
+        window.location = "http://localhost:5000/result"  
         
     }else{
         alert('4개가 체크되지 않았습니다.');
-    }
-
-        
+    }     
 })
 
 var next_btn= document.getElementById('bef_btn');
