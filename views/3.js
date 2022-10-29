@@ -1,3 +1,49 @@
+var p1=0
+var p2=0
+var p3=0
+var p4=0
+var pgber_percent = (100/12)*8
+
+function radio_check1(){
+    if (p1>0){
+        return 0
+    }else{
+        pgber_percent+=100/12
+        document.getElementById('progressbar').style="width: "+ String(pgber_percent) +"%";
+        p1++
+    }
+}
+
+function radio_check2(){
+    if (p2>0){
+        return 0
+    }else{
+        pgber_percent+=100/12
+        document.getElementById('progressbar').style="width: "+ String(pgber_percent) +"%";
+        p2++
+    }
+}
+
+function radio_check3(){
+    if (p3>0){
+        return 0
+    }else{
+        pgber_percent+=100/12
+        document.getElementById('progressbar').style="width: "+ String(pgber_percent) +"%";
+        p3++
+    }
+}
+
+function radio_check4(){
+    if (p4>0){
+        return 0
+    }else{
+        pgber_percent+=100/12
+        document.getElementById('progressbar').style="width: "+ String(pgber_percent) +"%";
+        p4++
+    }
+}
+
 var next_btn= document.getElementById('next_btn');
 var lst3
 

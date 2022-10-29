@@ -23,6 +23,17 @@ app.get('/test/3', (req, res) => {
   res.sendFile(path+"/3.html")
 })
 
+var cnt1 = 0
+app.get('/check/page1', (req, res) => {
+  cnt1++
+  res.json({cnt:cnt1})
+})
+
+var cnt2 = 0
+app.get('/check/page2', (req, res) => {
+  cnt2++
+  res.json({cnt:cnt2})
+})
 
 app.get('/result', (req, res) => { 
     res.sendFile(path+"/result.html")
@@ -83,14 +94,14 @@ app.get('/result/mbti', (req, res) => {
   }
   
   if (j_cnt>p_cnt){
-    var jp='j'
+    var jp='J'
   }else{
-    var jp='p'
+    var jp='P'
   }
 
   var mbti_str=ie+sn+tf+jp
-  console.log(mbti_str)
-  res.send(mbti_str);
+  //console.log(mbti_str)
+  res.json({mbti: mbti_str});
 })
 
 app.use('/view', express.static(path))
