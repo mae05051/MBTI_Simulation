@@ -2,7 +2,9 @@ var p1=0
 var p2=0
 var p3=0
 var p4=0
-var pgber_percent = (100/12)*8
+var pgber_percent = parseFloat(localStorage.getItem("pgber_percent"))
+//console.log("2.js pgber_percent : ",localStorage.getItem("pgber_percent"))
+document.getElementById('progressbar').style="width: "+ String(localStorage.getItem("pgber_percent")) +"%"
 
 function radio_check1(){
     if (p1>0){
@@ -81,5 +83,23 @@ next_btn.addEventListener('click', function(){
 
 var next_btn= document.getElementById('bef_btn');
 bef_btn.addEventListener('click', function(){
+    localStorage.setItem('pgber_percent',pgber_percent)
     window.history.back()
+})
+
+var i= document.getElementById('init');
+i.addEventListener('click', function(){
+    localStorage.clear()
+    fetch('http://localhost:5000/init')
+        .then(res => {
+            console.log(res);
+            return res.json();
+        })
+        .then(data => {
+            console.log(data)
+        })
+        .catch(err => {
+            console.log('Error', err);
+        });
+        window.location = "http://localhost:5000/test/"
 })

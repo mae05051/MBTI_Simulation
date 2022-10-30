@@ -7,10 +7,12 @@ app.use(express.json());
 
 app.use(express.urlencoded({extended: false}))
 
+//TEST
 app.get('/', (req, res) => { 
   res.send('Hello MBTI TEST!')
 })
 
+//page
 app.get('/test', (req, res) => { 
   res.sendFile(path+"/1.html")
 })
@@ -23,6 +25,11 @@ app.get('/test/3', (req, res) => {
   res.sendFile(path+"/3.html")
 })
 
+app.get('/result', (req, res) => { 
+  res.sendFile(path+"/result.html")
+})
+
+//앞, 뒤로 이동 최초 체크 API
 var cnt1 = 0
 app.get('/check/page1', (req, res) => {
   cnt1++
@@ -35,10 +42,14 @@ app.get('/check/page2', (req, res) => {
   res.json({cnt:cnt2})
 })
 
-app.get('/result', (req, res) => { 
-    res.sendFile(path+"/result.html")
+//체크 초기화
+app.get('/init', (req, res) => {
+  cnt1 = 0
+  cnt2 = 0
+  res.json({cnt:[cnt1,cnt2]})
 })
 
+//페이지 별 결과 전송 API
 var lst1
 app.post('/result/1', (req, res) => {
   lst1 = req.body.lst;
@@ -60,6 +71,7 @@ app.post('/result/3', (req, res) => {
   res.send(lst3);
 })
 
+//최종 결과 전송 API
 app.get('/result/mbti', (req, res) => {
   var arr = lst1.concat(lst2,lst3)
 
