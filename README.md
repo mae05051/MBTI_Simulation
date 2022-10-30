@@ -2,7 +2,7 @@
 - 간단한 질문들을 통해 당신의 MBTI와 세부정보까지 제공합니다.
 
 # WEB 구성
-- Front: html(Bootstrap), js
+- Front: html(Bootstrap, Jquery), js
 - Backend: Node.js
 
 # 사용법
