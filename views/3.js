@@ -73,7 +73,8 @@ next_btn.addEventListener('click', function(){
                 lst: lst3
             }),
         }).then((response) => console.log(response));
-
+        
+        localStorage.clear()
         window.location = "http://localhost:5000/result"  
         
     }else{
